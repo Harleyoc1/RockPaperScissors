@@ -49,11 +49,11 @@ public final class RockPaperScissors extends Application {
         final VBox scoreBoard = new VBox(5);
         final VBox verticalView = new VBox(15);
 
-        this.view.getStylesheets().add("file:" + FileUtils.getFile("stylesheets/default.css").getPath());
+        this.view.getStylesheets().add(Constants.FILE_PREFIX + FileUtils.getFile("stylesheets/default.css").getPath());
 
-        final Font header = Font.font("arial", FontWeight.BOLD, 16);
-        final Font subLine = Font.font("arial", FontWeight.BOLD, 14);
-        final Font body = Font.font("arial", FontWeight.NORMAL, 16);
+        final Font header = Font.font(Constants.ARIAL, FontWeight.BOLD, 16);
+        final Font subLine = Font.font(Constants.ARIAL, FontWeight.BOLD, 14);
+        final Font body = Font.font(Constants.ARIAL, FontWeight.NORMAL, 16);
 
         this.playerScoreLabel = InterfaceUtils.createLabel(Integer.toString(this.playerScore), subLine);
         this.computerScoreLabel = InterfaceUtils.createLabel(Integer.toString(this.computerScore), subLine);
@@ -95,7 +95,7 @@ public final class RockPaperScissors extends Application {
     }
 
     private ImageView getImageView (final String fileName) {
-        final Image paperImage = new Image("file:" + FileUtils.getInternalPath("textures/" + fileName + ".png"));
+        final Image paperImage = new Image(Constants.FILE_PREFIX + FileUtils.getInternalPath("textures/" + fileName + ".png"));
         final ImageView paperImageView = new ImageView(paperImage);
 
         paperImageView.setFitHeight(200);
@@ -128,11 +128,11 @@ public final class RockPaperScissors extends Application {
     }
 
     private void playCorrectSound () {
-        this.playSound("correct");
+        this.playSound(Constants.CORRECT_SOUND);
     }
 
     private void playIncorrectSound () {
-        this.playSound("incorrect");
+        this.playSound(Constants.INCORRECT_SOUND);
     }
 
     private void playSound (final String fileName) {
