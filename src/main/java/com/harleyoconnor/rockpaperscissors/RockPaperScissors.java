@@ -53,19 +53,19 @@ public final class RockPaperScissors extends Application {
 
         final Font header = Font.font("arial", FontWeight.BOLD, 16);
         final Font subLine = Font.font("arial", FontWeight.BOLD, 14);
-        final Font body = Font.font("arial", FontWeight.NORMAL, 14);
+        final Font body = Font.font("arial", FontWeight.NORMAL, 16);
 
         this.playerScoreLabel = InterfaceUtils.createLabel(Integer.toString(this.playerScore), subLine);
         this.computerScoreLabel = InterfaceUtils.createLabel(Integer.toString(this.computerScore), subLine);
         this.resultLabel = InterfaceUtils.createLabel("", body);
 
         scoreBoard.getChildren().addAll(
-                InterfaceUtils.createHBoxWithCentralElements(10,
+                InterfaceUtils.centraliseElementsInBox(new HBox(10),
                         InterfaceUtils.addElementsToPane(new HBox(0),
                                 InterfaceUtils.setSizeOfNode(InterfaceUtils.createLabel("Player", header), 30, 0)),
                         InterfaceUtils.addElementsToPane(new HBox(0),
                                 InterfaceUtils.setSizeOfNode(InterfaceUtils.createLabel("Computer", header), 30, 0))),
-                InterfaceUtils.createHBoxWithCentralElements(10,
+                InterfaceUtils.centraliseElementsInBox(new HBox(10),
                         InterfaceUtils.addElementsToPane(new HBox(0),
                                 InterfaceUtils.setSizeOfNode(this.playerScoreLabel, 30, 0)),
                         InterfaceUtils.addElementsToPane(InterfaceUtils.setSizeOfNode(new HBox(0), 30, 0),
@@ -73,11 +73,11 @@ public final class RockPaperScissors extends Application {
 
         verticalView.getChildren().addAll(
                 scoreBoard,
-                InterfaceUtils.addElementsToPane(InterfaceUtils.createHBoxWithCentralElements(5,
+                InterfaceUtils.addElementsToPane(InterfaceUtils.centraliseElementsInBox(new HBox(5),
                         this.createSelectionButton(SelectionType.ROCK),
                         this.createSelectionButton(SelectionType.PAPER),
                         this.createSelectionButton(SelectionType.SCISSORS))),
-                InterfaceUtils.addElementsToPane(InterfaceUtils.createHBoxWithCentralElements(0, this.resultLabel)));
+                InterfaceUtils.addElementsToPane(InterfaceUtils.centraliseElementsInBox(new HBox(0), this.resultLabel)));
 
         verticalView.setPadding(new Insets(20));
 

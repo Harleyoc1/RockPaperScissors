@@ -8,6 +8,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 
+import javax.annotation.Nullable;
+
 /**
  * @author Harley O'Connor
  */
@@ -29,14 +31,14 @@ public final class InterfaceUtils {
         return spacer;
     }
 
-    public static HBox createHBoxWithCentralElements (final int spacing, final Node... nodes) {
-        final HBox hBox = new HBox(spacing);
+    public static <T extends Pane> T centraliseElementsInBox (final T pane, final Node... nodes) {
+        if (!(pane instanceof HBox || pane instanceof VBox)) return pane;
 
-        addSpacerTo(hBox, true);
-        addElementsToPane(hBox, nodes);
-        addSpacerTo(hBox, true);
+        addSpacerTo(pane, pane instanceof HBox);
+        addElementsToPane(pane, nodes);
+        addSpacerTo(pane, pane instanceof HBox);
 
-        return hBox;
+        return pane;
     }
 
     public static <T extends Pane> T addSpacerTo (final T pane, final boolean horizontal) {
